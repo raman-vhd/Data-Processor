@@ -6,6 +6,7 @@ var Module = fx.Options(
 	fx.Provide(
 		NewRoutes,
 		NewTemplate,
+        NewDataHandler,
 	),
 )
 
@@ -17,9 +18,11 @@ type Route interface {
 
 func NewRoutes(
 	template templateRoute,
+    dataHandler dataHandlerRoute,
 ) Routes {
 	return Routes{
 		template,
+        dataHandler,
 	}
 }
 
