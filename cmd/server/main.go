@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/raman-vhd/arvan-challenge/internal/api/controller"
+	"github.com/raman-vhd/arvan-challenge/internal/api/middleware"
 	"github.com/raman-vhd/arvan-challenge/internal/api/route"
 	"github.com/raman-vhd/arvan-challenge/internal/lib"
 	"github.com/raman-vhd/arvan-challenge/internal/repository"
@@ -15,6 +16,7 @@ import (
 var Module = fx.Options(
 	repository.Module,
 	controller.Module,
+    middleware.Module,
 	service.Module,
 	route.Module,
 	lib.Module,
