@@ -61,10 +61,13 @@ func (r rateLimitRepository) GetRateLimitPerMinInfo(ctx context.Context, userID 
 	}
 
 	var rateLimitInfo model.RateLimit
-	r.Mongo.FindOne(ctx,
+	err = r.Mongo.FindOne(ctx,
 		bson.M{
 			"userid": userID,
 		}).Decode(&rateLimitInfo)
+	if err != nil {
+		return model.TokenBucketInfo{}, err
+	}
 
 	rateInt, err := strconv.Atoi(rateLimitInfo.ReqPerMin)
 	if err != nil {
@@ -134,10 +137,13 @@ func (r rateLimitRepository) GetReqSizeLimitPerMonInfo(ctx context.Context, user
 	}
 
 	var rateLimitInfo model.RateLimit
-	r.Mongo.FindOne(ctx,
+	err = r.Mongo.FindOne(ctx,
 		bson.M{
 			"userid": userID,
 		}).Decode(&rateLimitInfo)
+	if err != nil {
+		return model.ReqSizePerMonInfo{}, err
+	}
 
 	rateInt, err := strconv.Atoi(rateLimitInfo.ReqPerMon)
 	if err != nil {
