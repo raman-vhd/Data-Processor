@@ -8,6 +8,7 @@ import (
 
 type Env struct {
 	ServerPort           string `mapstructure:"SERVER_PORT"`
+	DBURI                string `mapstructure:"DB_URI"`
 	KafkaBootstrapServer string `mapstructure:"KAFKA_BOOTSTRAP_SERVER"`
 }
 
