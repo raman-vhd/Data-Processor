@@ -38,14 +38,14 @@ func NewDB(env Env) Database {
 
 	// Redis
 	rc := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     env.RedisURI,
 		Password: "",
 		DB:       0,
 	})
 
 	return Database{
 		MongoClient: mongoClient,
-        RedisClient: rc,
+		RedisClient: rc,
 	}
 }
 
