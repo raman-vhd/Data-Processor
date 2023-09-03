@@ -2,7 +2,6 @@ package service
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/raman-vhd/arvan-challenge/internal/model"
@@ -66,7 +65,6 @@ func (s rateLimitService) CheckReqSizeLimitPerMon(ctx context.Context, userID st
 		return false, err
 	}
 
-    fmt.Println(info.Size, size, info.Max)
 	if info.Size+size > info.Max {
 		return false, nil
 	}
@@ -80,6 +78,6 @@ func (s rateLimitService) UseRateLimitPerMinToken(ctx context.Context, userID st
 }
 
 func (s rateLimitService) AddToCurrentReqSizePerMon(ctx context.Context, userID string, size int) error {
-    err := s.repo.AddToCurrentReqSizePerMon(ctx, userID, size)
-    return err
+	err := s.repo.AddToCurrentReqSizePerMon(ctx, userID, size)
+	return err
 }
