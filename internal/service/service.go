@@ -7,5 +7,6 @@ var Module = fx.Options(
 		NewTemplate,
         NewDataHandler,
         NewRateLimit,
+        NewDuplicateCheck,
 	),
 )
